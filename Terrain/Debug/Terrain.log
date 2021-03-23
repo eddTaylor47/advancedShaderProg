@@ -1,10 +1,10 @@
 ﻿  Source.cpp
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(121,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(197,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(198,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(202,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(203,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(205,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(206,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(219,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(122,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(205,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(206,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(210,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(211,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(213,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(214,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Terrain\src\Source.cpp(227,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Terrain.vcxproj -> E:\Seagate\kept\to keep\unibersity\y3cgp\advshaderprog\Start_Point\Debug\Terrain.exe
