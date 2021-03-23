@@ -79,37 +79,37 @@ int main()
 	glCullFace(GL_BACK);
 
 	// simple vertex and fragment shader 
-	Shader shader("..\\shaders\\plainVert.vs", "..\\shaders\\plainFrag.fs");
+	Shader shader("..\\shaders\\plainVert.vs", "..\\shaders\\plainFrag.fs", "..\\shaders\\plainGeo.gs");
 	// load model with assimp
-	Model model1("..\\resources\\nano\\nanosuit\\nanosuit.obj");
-	Model model2("..\\resources\\elephant\\elefante.obj");
+	//Model model1("..\\resources\\nano\\nanosuit\\nanosuit.obj");
+	//Model model2("..\\resources\\elephant\\elefante.obj");
 	
 
 
-	////============================ TASK ONE ===========================================
-	//float points[] = {
-	//					// x,    y,   z,    r,    g,    b,	  u,    v
-	//	               -2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, 1.0f, 1.0f,
-	//	                2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, 1.0f, 1.0f,
-	//	                0.0f, 2.5f, 0.0f, 1.0f, 0.5f, 1.0f, 1.0f, 1.0f
-	//};
+	//============================ TASK ONE ===========================================
+	float points[] = {
+						// x,    y,   z,    r,    g,    b,	//  u,    v
+		               -2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, //1.0f, 1.0f,
+		                2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, //1.0f, 1.0f,
+		                0.0f, 2.5f, 0.0f, 1.0f, 0.5f, 1.0f//, 1.0f, 1.0f
+	};
 
-	//unsigned int VBO, VAO; //create identifiers for vbo and vao
-	//glGenBuffers(1, &VBO); //generate vbo
-	//glGenVertexArrays(1, &VAO); // generate vao
-	//glBindVertexArray(VAO); //declare VAO to be a vertex array object
-	//glBindBuffer(GL_ARRAY_BUFFER, VBO); //declare vbo to be a vertex buffer object
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(points), &points, GL_STATIC_DRAW); // declare the data stored in the vbo
+	unsigned int VBO, VAO; //create identifiers for vbo and vao
+	glGenBuffers(1, &VBO); //generate vbo
+	glGenVertexArrays(1, &VAO); // generate vao
+	glBindVertexArray(VAO); //declare VAO to be a vertex array object
+	glBindBuffer(GL_ARRAY_BUFFER, VBO); //declare vbo to be a vertex buffer object
+	glBufferData(GL_ARRAY_BUFFER, sizeof(points), &points, GL_STATIC_DRAW); // declare the data stored in the vbo
 
-	//glEnableVertexAttribArray(0); //enable the vertex array object on the gpu at index 0 for the first set of vertex data(x, y, z i.e. position)
-	////set up at the index 0(1st arg), 3 values(2nd), of type float(3rd), bool flag for normalised data(4th, typically always false), stride is the size of 6 floats(5th, length of all of the vertex data), 
-	////pointer to the index position of the starting index of the vertex array object(6th, is 0th position in gpu index)
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), 0); 
-	//glEnableVertexAttribArray(1); //enable the next set of vertex data (r, g, b i.e. colour)
-	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), 0); // starting from index 1
+	glEnableVertexAttribArray(0); //enable the vertex array object on the gpu at index 0 for the first set of vertex data(x, y, z i.e. position)
+	//set up at the index 0(1st arg), 3 values(2nd), of type float(3rd), bool flag for normalised data(4th, typically always false), stride is the size of 6 floats(5th, length of all of the vertex data), 
+	//pointer to the index position of the starting index of the vertex array object(6th, is 0th position in gpu index)
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0); 
+	glEnableVertexAttribArray(1); //enable the next set of vertex data (r, g, b i.e. colour)
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0); // starting from index 1
 	//glEnableVertexAttribArray(2); //enable the next set of vertex data (u, v i.e. texture UV coordinates)
 	//glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), 0); // starting from index 2
-	//glBindVertexArray(0); //bind the vertex array declared to start from index 0
+	glBindVertexArray(0); //bind the vertex array declared to start from index 0
 
 	//=======================================================================
 
@@ -134,26 +134,26 @@ int main()
 	    shader.setMat4("projection", projection); //upload projection matrix
 		shader.setMat4("view", view); //upload view matrix
 		shader.setMat4("model", model); //upload model matrix
-		shader.setVec3("viewPos", camera.Position); //upload camera position(viewPos)
-		shader.setVec3("lightPos", lightPos);
-		shader.setVec3("light.ambient", ambientMat);
-		shader.setVec3("light.diffuse", diffuseMat);
-		shader.setVec3("light.specular", specularMat);
-		shader.setVec3("light.position", lightPos);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //DRAWS WITH FILLED COLOUR
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // DRAWS WIREFRAME
-		//glBindVertexArray(VAO); //bind the vertex array buffer from which we are drawing(VAO is set up above)
-		//glDrawArrays(GL_TRIANGLES, 0, 3); //draw the array using tirangle primitives(1st param), starting from index 0 in enabled arrays(2nd), count of indices to draw(3rd)
-		
-		model1.Draw(shader);
-
-
-		model = glm::translate(model, glm::vec3(50.f, 25.f, -50.f)); // translate elefante
-		model = glm::scale(model, glm::vec3(10.f)); // scale elefante
-		model = glm::rotate(model, glm::radians(90.f), glm::vec3(0.f, -1.f, 0.f)); //rotate elefante
-		shader.setMat4("model", model); //upload updated model matrix
+		//shader.setVec3("viewPos", camera.Position); //upload camera position(viewPos)
+		//shader.setVec3("lightPos", lightPos);
+		//shader.setVec3("light.ambient", ambientMat);
+		//shader.setVec3("light.diffuse", diffuseMat);
+		//shader.setVec3("light.specular", specularMat);
+		//shader.setVec3("light.position", lightPos);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //DRAWS WITH FILLED COLOUR
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // DRAWS WIREFRAME
-		model2.Draw(shader); // draaw elefante with update model matrix
+		glBindVertexArray(VAO); //bind the vertex array buffer from which we are drawing(VAO is set up above)
+		glDrawArrays(GL_TRIANGLES, 0, 3); //draw the array using tirangle primitives(1st param), starting from index 0 in enabled arrays(2nd), count of indices to draw(3rd)
+		
+		//model1.Draw(shader);
+
+
+		//model = glm::translate(model, glm::vec3(50.f, 25.f, -50.f)); // translate elefante
+		//model = glm::scale(model, glm::vec3(10.f)); // scale elefante
+		//model = glm::rotate(model, glm::radians(90.f), glm::vec3(0.f, -1.f, 0.f)); //rotate elefante
+		//shader.setMat4("model", model); //upload updated model matrix
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // DRAWS WIREFRAME
+		//model2.Draw(shader); // draaw elefante with update model matrix
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
