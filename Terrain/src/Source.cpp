@@ -89,9 +89,9 @@ int main()
 	//============================ TASK ONE ===========================================
 	float points[] = {
 						// x,    y,   z,    r,    g,    b,	//  u,    v
-		               -2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, //1.0f, 1.0f,
-		                2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, //1.0f, 1.0f,
-		                0.0f, 2.5f, 0.0f, 1.0f, 0.5f, 1.0f//, 1.0f, 1.0f
+		               -2.5f, 0.0f, 0.0f//, 1.0f, 0.5f, 1.0f//, //1.0f, 1.0f,
+		                //2.5f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f, //1.0f, 1.0f,
+		                //0.0f, 2.5f, 0.0f, 1.0f, 0.5f, 1.0f//, 1.0f, 1.0f
 	};
 
 	unsigned int VBO, VAO; //create identifiers for vbo and vao
@@ -143,8 +143,8 @@ int main()
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //DRAWS WITH FILLED COLOUR
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // DRAWS WIREFRAME
 		glBindVertexArray(VAO); //bind the vertex array buffer from which we are drawing(VAO is set up above)
-		glDrawArrays(GL_TRIANGLES, 0, 3); //draw the array using tirangle primitives(1st param), starting from index 0 in enabled arrays(2nd), count of indices to draw(3rd)
-		
+		//glDrawArrays(GL_TRIANGLES, 0, 3); //draw the array using tirangle primitives(1st param), starting from index 0 in enabled arrays(2nd), count of indices to draw(3rd)
+		glDrawArrays(GL_POINTS, 0, 1); //draw a point
 		//model1.Draw(shader);
 
 
